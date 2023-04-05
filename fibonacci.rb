@@ -23,11 +23,13 @@ puts fib(7).inspect
 # base case: There are two conditions to break; if number is 0 and 1
 # recursive case: You can add the last two elements recursively until number is <= 1
 # return an array with the correct number of elements
-def fib_rec(number, fib_array = [0, 1])
-  return fib_array[0..number] if number <= 1
+def fib_rec(number, rec_array = [0, 1])
+  return rec_array[0..number] if number <= 1
 
-  fib_array << fib_array[-1] + fib_array[-2]
-  fib_rec(number - 1, fib_array)
+  rec_array << rec_array[-1] + rec_array[-2]
+  fib_rec(number - 1, rec_array)
+
+  rec_array[0..-2]
 end
 
-puts fib(7).inspect
+puts fib_rec(7).inspect
